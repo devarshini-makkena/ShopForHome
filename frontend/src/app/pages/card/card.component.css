@@ -1,0 +1,18 @@
+.fa-heart {
+    color :palevioletred;
+    cursor : pointer;
+}
+.searchbar {
+    font-size: 25px;
+    text-align: center;
+    border-color: palevioletred;
+}
+.search{
+    padding-left: 400px;
+    padding-bottom: 10px;
+    border-color: palevioletred;
+    
+}
+p {
+    font-size: small;
+}

@@ -1,0 +1,116 @@
+<div style="padding: 25px;background-color:lightpink;">
+    <p style="text-align: center; color:black;font-size: 30px;"><b>Welcome to SHOP FOR HOME!!!</b>
+
+    </p>
+</div>
+<br>
+<nav class="navbar navbar-expand-lg navbar-dark nav1 " >
+    <a class="navbar-brand" [routerLink]="root">
+        <img src="/assets/logo2.jpg" width="50" height="50" class="d-inline-block align-top" alt="">
+        
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+        <div class="navbar-nav" *ngIf="!currentUser || currentUser.role == Role.Customer">
+
+            <button class="btn btn-success">
+            <a class="nav-item nav-link "
+               routerLink="/category/0" style="color:white;">
+               Glass Sculptures
+            </a>
+            </button>
+            <button class="btn btn-success"> 
+            <a class="nav-item nav-link" 
+               routerLink="/category/1" style="color:white;">
+               Wall Prints
+            </a>
+        </button>
+        <button class="btn btn-success">
+            <a class="nav-item nav-link "
+               routerLink="/category/2" style="color:white;">
+               Ceramics
+            </a>
+        </button>
+        <button class="btn btn-success">
+            <a class="nav-item nav-link"
+               routerLink="/category/3" style="color:white;">
+               Macrame
+            </a>
+        </button>
+
+           
+
+        </div>
+
+        
+
+        <div class="navbar-nav ml-auto">
+            <button class="btn btn-success">
+            <a *ngIf="!currentUser || currentUser.role == Role.Customer"
+                    class="nav-item nav-link " routerLink="/cart" style="color:white;">
+                <i class="fas fa-shopping-cart"></i>
+                Cart
+            </a>
+            </button>
+
+            <div class="navbar-nav" *ngIf="currentUser && currentUser.role == Role.Manager">
+                <button class="btn btn-success">
+                <a class="nav-item nav-link"  routerLink="/discount" style="color:white;">Discount</a>
+                </button>
+                <button class="btn btn-success">
+                <a class="nav-item nav-link" (click)=getUsers() routerLink="/admin/user" style="color:white;">Users</a>
+                </button>
+                <button class="btn btn-success">
+                <a class="nav-item nav-link" routerLink="/seller/product" style="color:white;">Stocks</a>
+                </button>
+            </div>
+
+            <div class="navbar-nav" *ngIf="currentUser && currentUser.role == Role.Customer">
+                <button class="btn btn-success">
+                <a class="nav-item nav-link"  routerLink="/wishlist" style="color:white;">Wishlist</a>
+                </button>
+            </div>
+
+            <ng-container *ngIf="currentUser; else noUser">
+                
+               <!-- <a class="nav-item nav-link"  routerLink="/discount">Discount</a>
+                <a class="nav-item nav-link" (click)=getUsers() routerLink="/admin/user">Users</a>
+                <a class="nav-item nav-link" routerLink="/seller/product">Stocks</a> -->
+                <button class="btn btn-success">
+                <a class="nav-item nav-link " routerLink="/order" style="color:white;">
+                    <i class="fas fa-list-ul"></i>
+                    Orders
+                </a>
+                </button>
+                <button class="btn btn-success">
+                <a class="nav-item nav-link " routerLink="/profile" style="color:white;">
+                    {{name}}
+                </a>
+                </button>
+                <button class="btn btn-success">
+                <a class="nav-item nav-link " (click)="logout()" routerLink="/login" style="color:white;" [queryParams]="{logout: true}">
+                    Sign Out
+                </a>
+                </button>
+            </ng-container>
+            <ng-template #noUser>
+                <button class="btn btn-success">
+                <a class="nav-item nav-link " routerLink="/login" style="color:white;">
+                Sign In
+                </a>
+                </button>
+                <button class="btn btn-success">
+                <a class="nav-item nav-link " routerLink="/register" style="color:white;">
+                Sign Up
+                </a>
+                </button>
+            </ng-template>
+            
+            </div>
+    </div>
+</nav>
